@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1092729837398",
+    "firebase_url": "https://nodemcutest-ae41d-default-rtdb.firebaseio.com",
+    "project_id": "nodemcutest-ae41d",
+    "storage_bucket": "nodemcutest-ae41d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092729837398:android:d2b26cd4f2bde35428e8f7",
+        "android_client_info": {
+          "package_name": "com.mahendranmurugan.water_level_management_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0SLTiSqVEEkkeHBJJwS4nx8VjPijmnPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
