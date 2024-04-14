@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +20,7 @@ class _ProgressState extends State<Progress> {
   int current = 0;
   int capacity = 0;
   double calculatedValue = 0;
-  int percentage = 0;
+  double percentage = 0;
 
   double calculateValue() {
     return (100 - ((current / capacity) * 100)) / 100;
@@ -38,8 +40,9 @@ class _ProgressState extends State<Progress> {
         setState(() {
           current = event.snapshot.value as int;
           calculatedValue = calculateValue();
-          percentage = (calculatedValue * 100).toInt();
+          percentage = (calculatedValue * 100);
         });
+        log("Current is : $current\nCalculated Value is: $calculatedValue\nPercentage is: $percentage\nCapacity is: $capacity");
       },
     );
     return Scaffold(
@@ -56,7 +59,6 @@ class _ProgressState extends State<Progress> {
       ),
       body: Container(
         alignment: Alignment.center,
-        color: Colors.blue[100],
         child: FutureBuilder(
           future: _fbaseApp,
           builder: (context, snapshot) {
@@ -67,31 +69,24 @@ class _ProgressState extends State<Progress> {
               );
             } else if (snapshot.hasData) {
               return (capacity != 0)
-                  ? Column(
-                      children: [
-                        CircularPercentIndicator(
-                          radius: 130,
-                          lineWidth: 20,
-                          percent:
-                              (calculatedValue >= 0.0 && calculatedValue <= 1.0)
-                                  ? calculatedValue
-                                  : 0,
-                          progressColor: Colors.blue,
-                          backgroundColor: Colors.blue.shade200,
-                          circularStrokeCap: CircularStrokeCap.round,
-                          center: Text(
-                            "${(percentage >= 0 && percentage <= 100) ? percentage : 0}%",
-                            style: const TextStyle(
-                              color: Colors.white70,
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                  ? CircularPercentIndicator(
+                      radius: 130,
+                      lineWidth: 20,
+                      percent:
+                          (calculatedValue >= 0.0 && calculatedValue <= 1.0)
+                              ? calculatedValue
+                              : 0,
+                      progressColor: Colors.blue,
+                      backgroundColor: Colors.blue.shade200,
+                      circularStrokeCap: CircularStrokeCap.round,
+                      center: Text(
+                        "${(percentage >= 0 && percentage <= 100) ? percentage.toStringAsFixed(0) : 0} %",
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 45,
+                          fontWeight: FontWeight.bold,
                         ),
-                        Text("Current : $current"),
-                        Text("Capacity : $capacity"),
-                        Text("Calculated Value : $calculatedValue"),
-                      ],
+                      ),
                     )
                   : ElevatedButton(
                       onPressed: () => setOnce(),
@@ -104,9 +99,9 @@ class _ProgressState extends State<Progress> {
                           ),
                         ),
                       ),
-                      child: Text(
-                        "Set Maximum $current",
-                        style: const TextStyle(
+                      child: const Text(
+                        "Set Maximum",
+                        style: TextStyle(
                           color: Colors.white70,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
