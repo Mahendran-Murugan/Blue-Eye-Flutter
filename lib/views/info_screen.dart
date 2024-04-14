@@ -90,8 +90,8 @@ class _InfoPageState extends State<InfoPage> {
             } else if (snapshot.hasData) {
               return Container(
                 height: size.height * 0.6,
-                width: size.width * 0.65,
-                padding: const EdgeInsets.all(20),
+                width: size.width * 0.70,
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.blue.shade100.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(30),
@@ -162,28 +162,54 @@ class _InfoPageState extends State<InfoPage> {
                       height: size.height * 0.03,
                     ),
                     (capacity != 0)
-                        ? ElevatedButton(
-                            onPressed: () => {
-                              Navigator.of(context).pushNamed(progressRoute)
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue[300],
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () => {
+                                  Navigator.of(context).pushNamed(progressRoute)
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue[300],
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                                child: const Text(
+                                  "View Details",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: const Text(
-                              "View Details",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                              ElevatedButton(
+                                onPressed: () => setOnce(),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue[300],
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                                child: const Text(
+                                  "Rest Capacity",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           )
                         : ElevatedButton(
                             onPressed: () => setOnce(),
