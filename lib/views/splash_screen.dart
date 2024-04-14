@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue.shade100,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -78,7 +78,7 @@ class SplashScreen extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w900,
                               fontSize: 20,
-                              color: Colors.cyan[200],
+                              color: Colors.blue.shade800.withOpacity(0.7),
                             ),
                           )
                         ],

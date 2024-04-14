@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:water_level_management_system/firebase_options.dart';
 
 class Progress extends StatefulWidget {
   const Progress({super.key});
@@ -13,7 +14,9 @@ class Progress extends StatefulWidget {
 }
 
 class _ProgressState extends State<Progress> {
-  final Future<FirebaseApp> _fbaseApp = Firebase.initializeApp();
+  final Future<FirebaseApp> _fbaseApp = Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   final DatabaseReference _dbRef =
       FirebaseDatabase.instance.ref().child('Sensor');
 
@@ -28,13 +31,6 @@ class _ProgressState extends State<Progress> {
     return (100 - ((current / capacity) * 100)) / 100;
   }
 
-  void setOnce() {
-    setState(() {
-      capacity = current;
-      _dbRef.child('max_val').set(capacity);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -46,7 +42,6 @@ class _ProgressState extends State<Progress> {
           calculatedValue = calculateValue();
           percentage = (calculatedValue * 100);
         });
-        log("Current is : $current\nCalculated Value is: $calculatedValue\nPercentage is: $percentage\nCapacity is: $capacity");
       },
     );
 
@@ -70,6 +65,7 @@ class _ProgressState extends State<Progress> {
         ),
       ),
       body: Container(
+        color: (percentage >= 90) ? Colors.red[400] : Colors.blue.shade100,
         alignment: Alignment.center,
         child: FutureBuilder(
           future: _fbaseApp,
@@ -125,10 +121,22 @@ class _ProgressState extends State<Progress> {
                       padding: const EdgeInsets.all(30),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.blue.shade100.withOpacity(0.3),
+                        color: Colors.blue.shade400.withOpacity(0.3),
                       ),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
+                          const Text(
+                            "STATUS REPORT",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: size.height * 0.04,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [

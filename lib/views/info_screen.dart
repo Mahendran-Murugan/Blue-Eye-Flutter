@@ -22,7 +22,6 @@ class _InfoPageState extends State<InfoPage> {
   double calculatedValue = 0;
   double percentage = 0;
   bool motorStatus = false;
-  bool isConfigured = false;
 
   double calculateValue() {
     return (100 - ((current / capacity) * 100)) / 100;
@@ -45,7 +44,6 @@ class _InfoPageState extends State<InfoPage> {
           calculatedValue = calculateValue();
           percentage = (calculatedValue * 100);
         });
-        log("Current is : $current\nCalculated Value is: $calculatedValue\nPercentage is: $percentage\nCapacity is: $capacity");
       },
     );
     _dbRef.child("motor_status").onValue.listen(
@@ -55,10 +53,11 @@ class _InfoPageState extends State<InfoPage> {
         });
       },
     );
-    _dbRef.child("configured").onValue.listen(
+
+    _dbRef.child("max_val").onValue.listen(
       (event) {
         setState(() {
-          isConfigured = event.snapshot.value as bool;
+          capacity = event.snapshot.value as int;
         });
       },
     );
@@ -66,6 +65,7 @@ class _InfoPageState extends State<InfoPage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.blue.shade100,
       appBar: AppBar(
         backgroundColor: Colors.blue[400],
         title: const Text(
@@ -93,7 +93,7 @@ class _InfoPageState extends State<InfoPage> {
                 width: size.width * 0.70,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.blue.shade100.withOpacity(0.2),
+                  color: Colors.blue.shade400.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Column(
@@ -150,7 +150,7 @@ class _InfoPageState extends State<InfoPage> {
                           ),
                         ),
                         Text(
-                          isConfigured ? "Yes" : "No",
+                          (capacity != 0) ? "Yes" : "No",
                           textAlign: TextAlign.start,
                           style: const TextStyle(
                             fontSize: 16,
