@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:water_level_management_system/routes/constant.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -62,7 +63,7 @@ class SplashScreen extends StatelessWidget {
                   Positioned(
                     top: 130,
                     left: 110,
-                    child: Container(
+                    child: SizedBox(
                       height: size.height * 0.14,
                       width: size.width * 0.3,
                       child: Column(
@@ -89,7 +90,9 @@ class SplashScreen extends StatelessWidget {
                 height: size.height * 0.25,
               ),
               GestureDetector(
-                onTap: () => {},
+                onTap: () => Navigator.of(context).pushNamed(
+                  progressRoute,
+                ),
                 child: Container(
                   height: 65,
                   width: size.width * 0.5,
