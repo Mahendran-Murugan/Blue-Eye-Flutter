@@ -38,6 +38,7 @@ dependencies:
   percent_indicator: ^4.2.3
   firebase_core: ^2.29.0
   firebase_database: ^10.5.1
+  toggle_switch: ^2.3.0
 
 dev_dependencies:
   flutter_test:

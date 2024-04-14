@@ -21,6 +21,8 @@ class _ProgressState extends State<Progress> {
   int capacity = 0;
   double calculatedValue = 0;
   double percentage = 0;
+  bool motorStatus = false;
+  bool isConfigured = false;
 
   double calculateValue() {
     return (100 - ((current / capacity) * 100)) / 100;
@@ -35,6 +37,8 @@ class _ProgressState extends State<Progress> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     _dbRef.child("ultra_data").onValue.listen(
       (event) {
         setState(() {
@@ -45,11 +49,19 @@ class _ProgressState extends State<Progress> {
         log("Current is : $current\nCalculated Value is: $calculatedValue\nPercentage is: $percentage\nCapacity is: $capacity");
       },
     );
+
+    _dbRef.child("max_val").onValue.listen(
+      (event) {
+        setState(() {
+          capacity = event.snapshot.value as int;
+        });
+      },
+    );
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[400],
         title: const Text(
-          "B L U E     E Y E",
+          "Blue Eye",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -68,46 +80,116 @@ class _ProgressState extends State<Progress> {
                 style: TextStyle(),
               );
             } else if (snapshot.hasData) {
-              return (capacity != 0)
-                  ? CircularPercentIndicator(
-                      radius: 130,
-                      lineWidth: 20,
-                      percent:
-                          (calculatedValue >= 0.0 && calculatedValue <= 1.0)
-                              ? calculatedValue
-                              : 0,
-                      progressColor: Colors.blue,
-                      backgroundColor: Colors.blue.shade200,
-                      circularStrokeCap: CircularStrokeCap.round,
-                      center: Text(
-                        "${(percentage >= 0 && percentage <= 100) ? percentage.toStringAsFixed(0) : 0}%",
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 45,
-                          fontWeight: FontWeight.bold,
-                        ),
+              return Column(
+                children: [
+                  SizedBox(
+                    height: size.height * 0.07,
+                  ),
+                  const Text(
+                    "Current Water Level",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 24,
+                    ),
+                  ),
+                  SizedBox(
+                    height: size.height * 0.06,
+                  ),
+                  CircularPercentIndicator(
+                    radius: 130,
+                    lineWidth: 20,
+                    percent: (calculatedValue >= 0.0 && calculatedValue <= 1.0)
+                        ? calculatedValue
+                        : 0,
+                    progressColor: Colors.blue,
+                    backgroundColor: Colors.blue.shade200,
+                    circularStrokeCap: CircularStrokeCap.round,
+                    center: Text(
+                      "${(percentage >= 0 && percentage <= 100) ? percentage.toStringAsFixed(0) : 0}%",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 45,
+                        fontWeight: FontWeight.bold,
                       ),
-                    )
-                  : ElevatedButton(
-                      onPressed: () => setOnce(),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue[300],
-                        padding: const EdgeInsets.all(18),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
+                    ),
+                  ),
+                  SizedBox(
+                    height: size.height * 0.06,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.all(30),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.blue.shade100.withOpacity(0.3),
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Text(
+                                "Current Level",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              const Text(
+                                " : ",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                "$current",
+                                textAlign: TextAlign.start,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
+                          SizedBox(
+                            height: size.height * 0.02,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Text(
+                                "Total Capacity",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              const Text(
+                                " : ",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                "$capacity",
+                                textAlign: TextAlign.start,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
-                      child: const Text(
-                        "Set Maximum",
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    );
+                    ),
+                  ),
+                ],
+              );
             } else {
               return const CircularProgressIndicator();
             }

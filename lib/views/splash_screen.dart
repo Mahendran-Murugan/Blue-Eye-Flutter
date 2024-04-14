@@ -13,6 +13,7 @@ class SplashScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 height: size.height * 0.1,
@@ -87,11 +88,11 @@ class SplashScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: size.height * 0.25,
+                height: size.height * 0.1,
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context).pushNamed(
-                  progressRoute,
+                  infoRoute,
                 ),
                 child: Container(
                   height: 65,
