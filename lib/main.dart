@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:water_level_management_system/progress.dart';
-import 'package:water_level_management_system/splash_screen.dart';
+import 'package:water_level_management_system/routes/constant.dart';
+import 'package:water_level_management_system/views/progress.dart';
+import 'package:water_level_management_system/views/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
+      routes: {
+        splashRoute: (context) => const SplashScreen(),
+        progressRoute: (context) => const Progress(),
+      },
     );
   }
 }
