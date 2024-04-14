@@ -80,7 +80,7 @@ class _ProgressState extends State<Progress> {
                       backgroundColor: Colors.blue.shade200,
                       circularStrokeCap: CircularStrokeCap.round,
                       center: Text(
-                        "${(percentage >= 0 && percentage <= 100) ? percentage.toStringAsFixed(0) : 0} %",
+                        "${(percentage >= 0 && percentage <= 100) ? percentage.toStringAsFixed(0) : 0}%",
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 45,
