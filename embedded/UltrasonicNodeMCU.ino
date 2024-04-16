@@ -3,10 +3,10 @@
 #include "addons/TokenHelper.h"
 #include "addons/RTDBHelper.h"
 
-#define WIFI_SSID "Motog84"
-#define WIFI_PASSWORD "12345678"
-#define API_KEY "AIzaSyAUAsjd0SwXlMm8IlDTP5nQWVh5mBH1ccw"
-#define DATABASE_URL "https://nodemcutest-ae41d-default-rtdb.firebaseio.com/"
+#define WIFI_SSID "WIFI NAME"
+#define WIFI_PASSWORD "PASSWORD"
+#define API_KEY "YOUR API KEY"
+#define DATABASE_URL "YOUR API URL"
 
 double ultra_data;
 double capacity;
