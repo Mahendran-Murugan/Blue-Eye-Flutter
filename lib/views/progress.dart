@@ -19,6 +19,7 @@ class _ProgressState extends State<Progress> {
       FirebaseDatabase.instance.ref().child('Sensor');
 
   int current = 0;
+  int realCurrent = 0;
   int capacity = 0;
   double calculatedValue = 0;
   double percentage = 0;
@@ -37,6 +38,7 @@ class _ProgressState extends State<Progress> {
       (event) {
         setState(() {
           current = event.snapshot.value as int;
+          realCurrent = capacity - current;
           calculatedValue = calculateValue();
           percentage = (calculatedValue * 100);
         });
@@ -153,7 +155,9 @@ class _ProgressState extends State<Progress> {
                                 ),
                               ),
                               Text(
-                                "$current",
+                                (realCurrent <= capacity && realCurrent >= 0)
+                                    ? "$realCurrent"
+                                    : "0",
                                 textAlign: TextAlign.start,
                                 style: const TextStyle(
                                   fontSize: 16,

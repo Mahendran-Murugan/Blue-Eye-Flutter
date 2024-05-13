@@ -17,8 +17,6 @@ class _InfoPageState extends State<InfoPage> {
 
   int current = 0;
   int capacity = 0;
-  double calculatedValue = 0;
-  double percentage = 0;
   bool motorStatus = false;
 
   double calculateValue() {
@@ -39,8 +37,6 @@ class _InfoPageState extends State<InfoPage> {
       (event) {
         setState(() {
           current = event.snapshot.value as int;
-          calculatedValue = calculateValue();
-          percentage = (calculatedValue * 100);
         });
       },
     );
@@ -199,7 +195,7 @@ class _InfoPageState extends State<InfoPage> {
                                   ),
                                 ),
                                 child: const Text(
-                                  "Rest Capacity",
+                                  "Reset Capacity",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
