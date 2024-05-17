@@ -51,7 +51,7 @@ Here are some screenshots of the Blue Eye application in action:
 ![Water Level Monitoring Screen Status: Overflow](./screenshots/output4.jpg)
 
 ### Hardware Kit Setup
-![Hardware Kit Setup](./screenshots/output5.jpg)
+![Hardware Kit Setup](./screenshots/output5.jpeg)
 
 ## Contributions
 
