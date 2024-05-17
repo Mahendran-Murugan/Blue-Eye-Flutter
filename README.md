@@ -16,7 +16,7 @@ Welcome to the Blue Eye project repository! This project aims to develop a real-
 
 To set up and run the Blue Eye project on your local machine, follow these steps:
 
-1. Clone this repository: `git clone https://github.com/Mahendran-Murugan/Blue-Eye.git`
+1. Clone this repository: `https://github.com/Mahendran-Murugan/Blue-Eye-Flutter.git`
 2. Navigate to the project directory: `cd Blue-Eye`
 3. Install dependencies: `flutter pub get`
 4. Set up Firebase backend: Refer to Firebase documentation for setup instructions.
