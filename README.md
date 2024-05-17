@@ -38,20 +38,20 @@ Make sure you have Flutter installed on your system before running the applicati
 
 Here are some screenshots of the Blue Eye application in action:
 
-### Dashboard
-![Dashboard](./screenshots/dashboard.png)
+### Landing Screen
+![Landing Screen](./screenshots/output1.png)
 
-### Sensor Data
-![Sensor Data](./screenshots/sensor-data.png)
+### Info Screen
+![Info Screen](./screenshots/output2.png)
 
-### Control Panel
-![Control Panel](./screenshots/control-panel.png)
+### Water Level Monitoring Screen Status: Normal
+![Water Level Monitoring Screen Status: Normal](./screenshots/output3.png)
 
-### Settings
-![Settings](./screenshots/settings.png)
+### Water Level Monitoring Screen Status: Overflow
+![Water Level Monitoring Screen Status: Overflow](./screenshots/output4.png)
 
-### Notifications
-![Notifications](./screenshots/notifications.png)
+### Hardware Kit Setup
+![Hardware Kit Setup](./screenshots/output5.png)
 
 ### Reports
 ![Reports](./screenshots/reports.png)
