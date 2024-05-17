@@ -34,6 +34,28 @@ Make sure you have Flutter installed on your system before running the applicati
   
 - **Flutter:** Framework for building cross-platform UI, ensuring a consistent user experience across different devices.
 
+## Output
+
+Here are some screenshots of the Blue Eye application in action:
+
+### Dashboard
+![Dashboard](./screenshots/dashboard.png)
+
+### Sensor Data
+![Sensor Data](./screenshots/sensor-data.png)
+
+### Control Panel
+![Control Panel](./screenshots/control-panel.png)
+
+### Settings
+![Settings](./screenshots/settings.png)
+
+### Notifications
+![Notifications](./screenshots/notifications.png)
+
+### Reports
+![Reports](./screenshots/reports.png)
+
 ## Contributions
 
 Contributions to enhance and improve the Blue Eye project are welcome. If you're interested in contributing, follow these steps:
