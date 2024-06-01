@@ -1,10 +1,13 @@
-# Blue Eye - Real-Time Water Management System
+# Blue Eye - Real-Time Water Level Monitoring System
 
-Welcome to the Blue Eye project repository! This project aims to develop a real-time water management system leveraging IoT technology for efficient monitoring and control of water resources. The system integrates sensors, actuators, and data analytics techniques to address challenges associated with water distribution and usage.
+Welcome to the Blue Eye project repository! This project aims to develop a real-time water level monitoring system leveraging IoT technology for efficient monitoring and control of water resources. The system integrates sensors, actuators, and data analytics techniques to address challenges associated with water distribution and usage.
+
+## To Test the Application 
+Click and Download Apk --> [Blue Eye Water Level Monitoring System](./AndroidApp/BlueEyeWaterMonitoringSystem.apk)
 
 ## Features
 
-- **Real-Time Monitoring and Control:** Blue Eye enables remote monitoring and control of water resources in real-time, allowing users to efficiently manage water distribution systems.
+- **Real-Time Monitoring and Control:** Blue Eye enables remote monitoring and control of water level in real-time, allowing users to efficiently manage water level.
   
 - **IoT Integration:** Leveraging NodeMCU microcontrollers, ultrasonic sensors, and relays, along with Arduino Uno for additional interfacing capabilities, the system provides seamless integration of IoT technology for monitoring and controlling water resources.
   
